@@ -1,0 +1,12 @@
+import { useState } from "react";
+import Notification from "../component/notification";
+import "./platform.css";
+
+function Rewards() {
+  const [points, setPoints] = useState(2480);
+  const [message, setMessage] = useState("");
+  const redeem = (cost, label) => { if (points < cost) { setMessage("You need more points for this reward."); return; } setPoints((current) => current - cost); setMessage(`${label} redeemed successfully.`); };
+  return <main className="platform-page"><header className="platform-hero"><div><p className="eyebrow">Member benefits</p><h1>Rewards</h1><p>Turn everyday banking activity into useful perks.</p></div><div className="points-balance"><strong>{points.toLocaleString()}</strong><span>points available</span></div></header>{message && <Notification type={message.includes("successfully") ? "success" : "error"} message={message} />}<div className="platform-grid three-columns"><section className="platform-card metric-card"><span>Reward points</span><strong>{points.toLocaleString()}</strong><small>Next tier at 5,000 points</small></section><section className="platform-card metric-card"><span>Cashback earned</span><strong>$86.40</strong><small>This calendar year</small></section><section className="platform-card metric-card"><span>Current tier</span><strong>Silver</strong><small>520 points to Gold</small></section></div><section className="platform-card"><div className="card-heading"><div><h2>Available rewards</h2><p>Demo rewards available for redemption.</p></div></div><div className="reward-list"><article><div><strong>$10 statement credit</strong><small>1,000 points</small></div><button className="primary-action" type="button" onClick={() => redeem(1000, "$10 statement credit")}>Redeem</button></article><article><div><strong>Airport lounge pass</strong><small>2,000 points</small></div><button className="primary-action" type="button" onClick={() => redeem(2000, "Airport lounge pass")}>Redeem</button></article><article><div><strong>Charity donation</strong><small>500 points</small></div><button className="primary-action" type="button" onClick={() => redeem(500, "Charity donation")}>Redeem</button></article></div></section><section className="platform-card"><h2>Reward history</h2><div className="simple-list"><p><strong>+250</strong> Salary deposit bonus <span className="muted">Sep 02, 2026</span></p><p><strong>+120</strong> Card purchase cashback <span className="muted">Aug 28, 2026</span></p></div></section></main>;
+}
+
+export default Rewards;

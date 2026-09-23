@@ -1,0 +1,9 @@
+.ui-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-sm);
+  box-shadow: var(--shadow-sm);
+}
+
+.ui-card.flat { box-shadow: none; border-color: transparent; }

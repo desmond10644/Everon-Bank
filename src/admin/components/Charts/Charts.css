@@ -1,0 +1,60 @@
+.chart-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 22px;
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chart-header h3 {
+  margin: 0 0 5px;
+}
+
+.chart-header p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.chart-header select {
+  padding: 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+}
+
+.chart {
+  height: 260px;
+  margin-top: 30px;
+  display: flex;
+  align-items: end;
+  justify-content: space-around;
+  gap: 20px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.chart-column {
+  height: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+  gap: 8px;
+}
+
+.chart-bar {
+  width: 45px;
+  background: #2563eb;
+  border-radius: 6px 6px 0 0;
+  min-height: 10px;
+}
+
+.chart-column span {
+  font-size: 12px;
+  color: #6b7280;
+}

@@ -1,0 +1,127 @@
+.notification {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  margin: 0;
+  color: var(--text);
+  text-align: left;
+  font-weight: 700;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.notification:hover {
+  transform: translateY(-1px);
+  border-color: rgba(93, 163, 255, 0.4);
+}
+
+.notification-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 28px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  color: #fff;
+  background: var(--primary);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.notification-content {
+  min-width: 0;
+  flex: 1;
+}
+
+.notification-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.notification-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.notification time {
+  flex: 0 0 auto;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.notification-message {
+  display: block;
+  margin-top: 6px;
+  color: var(--text-soft);
+  font-size: 0.82rem;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.notification-unread-dot {
+  width: 7px;
+  height: 7px;
+  margin-top: 8px;
+  border-radius: 50%;
+  background: var(--primary);
+}
+
+.notification.read {
+  opacity: 0.7;
+}
+
+.notification.unread {
+  box-shadow: inset 3px 0 0 var(--primary);
+}
+
+.notification.success {
+  background: var(--accent-soft);
+  border-color: rgba(18, 184, 134, 0.15);
+}
+
+.notification.error {
+  background: var(--danger-soft);
+  border-color: rgba(239, 68, 68, 0.15);
+}
+
+.notification.security {
+  background: var(--danger-soft);
+  border-color: rgba(239, 68, 68, 0.15);
+}
+
+.notification.transaction {
+  background: var(--primary-soft);
+  border-color: rgba(29, 78, 216, 0.15);
+}
+
+.notification.bank-update {
+  background: var(--primary-soft);
+  border-color: rgba(29, 78, 216, 0.15);
+}
+
+.notification.warning {
+  background: var(--warning-soft);
+  border-color: rgba(245, 185, 66, 0.15);
+}
+
+.notification.info {
+  background: var(--primary-soft);
+  border-color: rgba(29, 78, 216, 0.15);
+}
+
+@media (max-width: 600px) {
+  .notification-topline {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+}

@@ -1,0 +1,9 @@
+.theme-toggle-ui {
+  border: 1px solid var(--border);
+  background: transparent;
+  padding: 6px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.theme-toggle-ui:focus { outline: 2px solid var(--primary); outline-offset: 2px; }

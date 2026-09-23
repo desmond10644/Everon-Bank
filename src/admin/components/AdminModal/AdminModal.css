@@ -1,0 +1,41 @@
+.admin-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+}
+
+.admin-modal {
+  background: white;
+  width: 100%;
+  max-width: 550px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.admin-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 22px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.admin-modal-header h3 {
+  margin: 0;
+}
+
+.admin-modal-header button {
+  border: none;
+  background: none;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.admin-modal-body {
+  padding: 22px;
+}

@@ -1,0 +1,21 @@
+.ui-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 10px;
+  transition: transform var(--transition-fast) var(--transition-smooth), box-shadow var(--transition-fast);
+}
+
+.ui-btn:active { transform: translateY(1px); }
+
+.ui-btn[disabled] { opacity: 0.6; pointer-events: none; }
+
+.ui-btn-ui { background: transparent; color: var(--text); border: 1px solid var(--border); }
+.ui-btn-primary { background: linear-gradient(90deg,var(--primary),var(--primary-600)); color: #fff; }
+.ui-btn-secondary { background: var(--card-bg); color: var(--text); border: 1px solid var(--border); }
+.ui-btn-ghost { background: transparent; color: var(--primary); }

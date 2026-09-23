@@ -1,0 +1,78 @@
+.transaction-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 14px;
+  margin-bottom: 12px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.56);
+}
+
+html[data-theme="dark"] .transaction-card {
+  background: rgba(9,18,29,0.45);
+}
+
+.transaction-details {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.tx-title {
+  margin: 0;
+  font-size: 0.96rem;
+  color: var(--text);
+  font-weight: 700;
+}
+
+.tx-date {
+  font-size: 0.76rem;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.transaction-info {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.tx-amount {
+  font-weight: 800;
+  color: var(--text);
+  font-size: 0.98rem;
+}
+
+.status {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 5px 8px;
+  border-radius: 999px;
+  color: white;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.status.completed {
+  background: rgba(18, 184, 134, 0.18);
+  color: var(--accent);
+}
+
+.status.pending {
+  background: rgba(245, 185, 66, 0.18);
+  color: var(--warning);
+}
+
+.status.failed {
+  background: rgba(239, 68, 68, 0.18);
+  color: var(--danger);
+}
+
+.status.unknown {
+  background: rgba(96, 112, 138, 0.18);
+  color: var(--muted);
+}

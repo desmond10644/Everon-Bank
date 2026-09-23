@@ -1,0 +1,50 @@
+.help-page {
+  min-height: 100%;
+}
+
+.help-content {
+  padding: 8px 0;
+}
+
+.help-content h1 {
+  margin: 0 0 8px;
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  color: var(--text);
+}
+
+.subtitle {
+  color: var(--muted);
+  margin-bottom: 22px;
+}
+
+.faq-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+.faq-card {
+  background: rgba(255,255,255,0.82);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 22px 18px;
+  box-shadow: var(--shadow-sm);
+}
+
+html[data-theme="dark"] .faq-card {
+  background: rgba(16, 28, 47, 0.88);
+}
+
+.faq-card h3 {
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.faq-card p {
+  line-height: 1.7;
+  color: var(--text-soft);
+}
+
+@media (max-width:768px) {
+  .help-content { padding: var(--spacing-sm); }
+}

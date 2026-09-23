@@ -1,0 +1,89 @@
+.register-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 16px;
+  background:
+    radial-gradient(circle at top left, rgba(18, 184, 134, 0.18), transparent 30%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-elevated) 100%);
+}
+
+.register-form {
+  width: min(100%, 500px);
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  box-shadow: var(--shadow-lg);
+  padding: 32px 26px;
+}
+
+html[data-theme="dark"] .register-form {
+  background: rgba(16, 28, 47, 0.9);
+}
+
+.register-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: clamp(2rem, 3vw, 2.4rem);
+}
+
+.register-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--text-soft);
+}
+
+.register-form input {
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 18px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--text);
+}
+
+html[data-theme="dark"] .register-form input {
+  background: rgba(9, 18, 29, 0.45);
+}
+
+.register-form button {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-strong));
+  color: #fff;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+.register-form p {
+  margin-top: 18px;
+  text-align: center;
+}
+
+.register-form a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.error-message,
+.success-message {
+  padding: 10px 12px;
+  border-radius: 10px;
+  margin-bottom: 18px;
+  font-size: 0.95rem;
+}
+
+.error-message {
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+
+.success-message {
+  background: var(--accent-soft);
+  color: var(--accent);
+}

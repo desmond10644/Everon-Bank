@@ -1,0 +1,75 @@
+.app-layout {
+  min-height: 100vh;
+  background: transparent;
+}
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.72);
+  border-bottom: 1px solid var(--border);
+}
+
+html[data-theme="dark"] .app-header {
+  background: rgba(8, 15, 25, 0.72);
+}
+
+.app-body {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  width: min(1360px, calc(100% - 32px));
+  margin: 24px auto 0;
+  padding-bottom: 32px;
+}
+
+.app-sidebar {
+  width: 260px;
+  flex: 0 0 260px;
+}
+
+.app-content {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.page.card {
+  background: rgba(255, 255, 255, 0.84);
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  box-shadow: var(--shadow-sm);
+  padding: 24px;
+}
+
+html[data-theme="dark"] .page.card {
+  background: rgba(16, 28, 47, 0.9);
+}
+
+.app-footer {
+  width: min(1360px, calc(100% - 32px));
+  margin: 0 auto 24px;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+}
+
+@media (max-width: 900px) {
+  .app-body {
+    flex-direction: column;
+    width: min(100% - 20px, 680px);
+    margin-top: 16px;
+    gap: 16px;
+  }
+
+  .app-sidebar {
+    width: 100%;
+    flex: 1 1 auto;
+  }
+
+  .page.card {
+    padding: 18px;
+    border-radius: 20px;
+  }
+}
+

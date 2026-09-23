@@ -1,0 +1,172 @@
+.transactions-content {
+	padding: 8px 0;
+}
+
+.activity-header {
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: 20px;
+	padding-bottom: 22px;
+	border-bottom: 1px solid var(--border);
+}
+
+.title-group h1 {
+	margin: 0 0 8px;
+	color: var(--text);
+	font-size: clamp(2rem, 4vw, 3.35rem);
+	letter-spacing: -0.04em;
+}
+
+.subtitle {
+	margin: 0;
+	color: var(--muted);
+	font-size: 0.95rem;
+}
+
+.csv-btn {
+	min-height: 42px;
+	padding: 0 16px;
+	border: 1px solid rgba(93, 163, 255, 0.28);
+	border-radius: 10px;
+	color: #fff;
+	background: linear-gradient(135deg, var(--primary), var(--primary-strong));
+	box-shadow: 0 8px 18px rgba(29, 78, 216, 0.18);
+	font-size: 0.84rem;
+	font-weight: 700;
+	cursor: pointer;
+	transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.csv-btn:hover {
+	transform: translateY(-1px);
+	box-shadow: 0 11px 22px rgba(29, 78, 216, 0.25);
+}
+
+.table-container {
+	overflow-x: auto;
+	margin-top: 22px;
+	border: 1px solid var(--border);
+	border-radius: 16px;
+	background: rgba(8, 15, 25, 0.22);
+}
+
+.transaction-table {
+	width: 100%;
+	min-width: 620px;
+	border-collapse: collapse;
+	color: var(--text);
+}
+
+.transaction-table th {
+	padding: 14px 18px;
+	color: var(--muted);
+	background: rgba(93, 163, 255, 0.06);
+	font-size: 0.68rem;
+	font-weight: 800;
+	letter-spacing: 0.1em;
+	text-align: left;
+}
+
+.transaction-table td {
+	padding: 16px 18px;
+	border-top: 1px solid var(--border);
+	font-size: 0.88rem;
+}
+
+.transaction-table tbody tr {
+	transition: background var(--transition-fast);
+}
+
+.transaction-table tbody tr:hover {
+	background: rgba(93, 163, 255, 0.06);
+}
+
+.desc-cell {
+	min-width: 220px;
+	color: var(--text);
+	font-weight: 700;
+}
+
+.date-cell {
+	color: var(--muted);
+	white-space: nowrap;
+}
+
+.text-right {
+	text-align: right !important;
+}
+
+.amount-cell {
+	font-variant-numeric: tabular-nums;
+	font-weight: 800;
+	white-space: nowrap;
+}
+
+.amount-cell.positive {
+	color: var(--accent);
+}
+
+.amount-cell.negative {
+	color: var(--danger);
+}
+
+.status-badge {
+	display: inline-flex;
+	padding: 5px 9px;
+	border-radius: 999px;
+	background: var(--accent-soft);
+	color: var(--accent);
+	font-size: 0.68rem;
+	font-weight: 800;
+	text-transform: capitalize;
+}
+
+.status-badge.pending {
+	background: var(--warning-soft);
+	color: var(--warning);
+}
+
+.status-badge.failed,
+.status-badge.rejected {
+	background: var(--danger-soft);
+	color: var(--danger);
+}
+
+.table-status,
+.no-data {
+	padding: 42px 18px !important;
+	color: var(--muted);
+	text-align: center;
+}
+
+.empty-state p {
+	margin: 10px 0 0;
+}
+
+.empty-state .icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 42px;
+	height: 42px;
+	border-radius: 12px;
+	background: var(--primary-soft);
+	font-size: 1.2rem;
+}
+
+@media (max-width: 600px) {
+	.activity-header {
+		align-items: stretch;
+		flex-direction: column;
+		gap: 16px;
+	}
+
+	.csv-btn {
+		width: 100%;
+	}
+
+	.table-container {
+		margin-top: 18px;
+	}
+}

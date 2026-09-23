@@ -1,0 +1,109 @@
+.bank-card {
+  width: 100%;
+  max-width: 420px;
+  background: linear-gradient(135deg, #11213f 0%, #1d4ed8 36%, #0f172a 100%);
+  color: #eef5ff;
+  border-radius: 26px;
+  padding: 22px 20px 18px;
+  box-shadow: 0 24px 40px rgba(17, 33, 63, 0.28);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid rgba(255,255,255,0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.bank-card::before {
+  content: "";
+  position: absolute;
+  inset: -40% auto auto 60%;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.12);
+  filter: blur(8px);
+}
+
+.bank-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 48px rgba(17, 33, 63, 0.34);
+}
+
+.bank-card-header,
+.bank-card-footer,
+.bank-card-balance,
+.bank-name {
+  position: relative;
+  z-index: 1;
+}
+
+.bank-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bank-card-header h3 {
+  font-size: 1.08rem;
+  margin: 0;
+  font-weight: 700;
+}
+
+.chip {
+  font-size: 1.3rem;
+}
+
+.bank-card-number {
+  position: relative;
+  z-index: 1;
+  margin: 26px 0 18px;
+  font-size: 1.2rem;
+  letter-spacing: 0.18em;
+  font-weight: 700;
+}
+
+.bank-card-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.label {
+  font-size: 0.7rem;
+  color: rgba(238,245,255,0.7);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.bank-card-footer h4 {
+  margin: 0;
+  font-size: 0.92rem;
+}
+
+.bank-card-balance {
+  border-top: 1px solid rgba(255,255,255,0.14);
+  padding-top: 14px;
+}
+
+.bank-card-balance p {
+  font-size: 0.72rem;
+  color: rgba(238,245,255,0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.bank-card-balance h2 {
+  margin-top: 6px;
+  font-size: 1.5rem;
+}
+
+.bank-name {
+  text-align: right;
+  margin-top: 16px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(238,245,255,0.8);
+}

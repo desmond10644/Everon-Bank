@@ -1,4 +1,4 @@
-import "./Modal.css";
+import "./modal.css";
 
 function Modal({ show, title, children, onClose }) {
   if (!show) return null;

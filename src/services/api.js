@@ -1,8 +1,9 @@
+
 // api.js
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: "https://everon-bankbackend.vercel.app/api",
   headers: {
     "Content-Type": "application/json",
   },
@@ -12,14 +13,18 @@ const api = axios.create({
 api.interceptors.request.use(
   (config) => {
     try {
-      const token = localStorage.getItem("token") || localStorage.getItem("mybank_admin_token");
+      const token =
+        localStorage.getItem("token") ||
+        localStorage.getItem("mybank_admin_token");
+
       if (token) {
         config.headers = config.headers || {};
         config.headers["Authorization"] = `Bearer ${token}`;
       }
     } catch {
-      // ignore
+      // Ignore localStorage errors
     }
+
     return config;
   },
   (error) => Promise.reject(error)

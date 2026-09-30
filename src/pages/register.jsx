@@ -42,6 +42,7 @@ function Register() {
 
     try {
       setLoading(true);
+      const [firstName, ...lastNameParts] = form.fullName.trim().split(/\s+/);
 
       const response = await fetch(
         "https://everon-bankbackend.vercel.app/api/auth/register",
@@ -53,7 +54,8 @@ function Register() {
           },
 
           body: JSON.stringify({
-            fullName: form.fullName,
+            firstName,
+            lastName: lastNameParts.join(" "),
             email: form.email,
             phone: form.phone,
             password: form.password,

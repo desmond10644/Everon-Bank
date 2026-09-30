@@ -5,16 +5,19 @@ const jwt = require("jsonwebtoken");
 const register = async (req, res) => {
   try {
     const {
-      firstName,
-      lastName,
+      firstName: submittedFirstName,
+      lastName: submittedLastName,
+      fullName,
       email,
       phone,
       accountType,
       password
     } = req.body;
+    const nameParts = String(fullName || "").trim().split(/\s+/).filter(Boolean);
+    const firstName = submittedFirstName?.trim() || nameParts.shift() || "";
+    const lastName = submittedLastName?.trim() || nameParts.join(" ");
 
-    // 1. Updated validation for the new fields
-    if (!firstName || !lastName || !email || !phone || !accountType || !password) {
+    if (!firstName || !email || !phone || !password) {
       return res.status(400).json({
         success: false,
         message: "Please provide all required fields"
@@ -48,10 +51,10 @@ const register = async (req, res) => {
         VALUES (?, ?, ?, ?, ?, ?)`,
         [
           firstName,
-          lastName,
+          lastName || null,
           email,
           phone,
-          accountType,
+          accountType || null,
           hashedPassword
         ]
       );

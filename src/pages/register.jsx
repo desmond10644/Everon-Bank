@@ -11,6 +11,7 @@ function Register() {
     fullName: "",
     email: "",
     phone: "",
+    accountType: "Savings",
     password: "",
     confirmPassword: "",
   });
@@ -34,30 +35,37 @@ function Register() {
     setError("");
     setSuccess("");
 
-    // Check passwords
     if (form.password !== form.confirmPassword) {
       setError("Passwords do not match!");
       return;
     }
 
+    const nameParts = form.fullName.trim().split(/\s+/);
+
+    if (nameParts.length < 2) {
+      setError("Please enter your first and last name.");
+      return;
+    }
+
     try {
       setLoading(true);
-      const [firstName, ...lastNameParts] = form.fullName.trim().split(/\s+/);
+
+      const firstName = nameParts[0];
+      const lastName = nameParts.slice(1).join(" ");
 
       const response = await fetch(
         "https://everon-bankbackend.vercel.app/api/auth/register",
         {
           method: "POST",
-
           headers: {
             "Content-Type": "application/json",
           },
-
           body: JSON.stringify({
             firstName,
-            lastName: lastNameParts.join(" "),
+            lastName,
             email: form.email,
             phone: form.phone,
+            accountType: form.accountType,
             password: form.password,
           }),
         }
@@ -78,8 +86,7 @@ function Register() {
         navigate("/login");
       }, 1500);
     } catch (error) {
-      console.error(error);
-
+      console.error("Registration error:", error);
       setError("Unable to connect to the server.");
     } finally {
       setLoading(false);
@@ -114,7 +121,7 @@ function Register() {
           id="fullName"
           type="text"
           name="fullName"
-          placeholder="Full Name"
+          placeholder="Enter your full name"
           value={form.fullName}
           onChange={handleChange}
           required
@@ -128,7 +135,7 @@ function Register() {
           id="email"
           type="email"
           name="email"
-          placeholder="Email Address"
+          placeholder="Enter your email"
           value={form.email}
           onChange={handleChange}
           required
@@ -142,11 +149,35 @@ function Register() {
           id="phone"
           type="tel"
           name="phone"
-          placeholder="Phone Number"
+          placeholder="Enter your phone number"
           value={form.phone}
           onChange={handleChange}
           required
         />
+
+        <label htmlFor="accountType">
+          Account Type
+        </label>
+
+        <select
+          id="accountType"
+          name="accountType"
+          value={form.accountType}
+          onChange={handleChange}
+          required
+        >
+          <option value="Savings">
+            Savings Account
+          </option>
+
+          <option value="Current">
+            Current Account
+          </option>
+
+          <option value="Business">
+            Business Account
+          </option>
+        </select>
 
         <label htmlFor="password">
           Password
@@ -155,7 +186,7 @@ function Register() {
         <PasswordInput
           id="password"
           name="password"
-          placeholder="Password"
+          placeholder="Enter your password"
           value={form.password}
           onChange={handleChange}
           required
@@ -168,7 +199,7 @@ function Register() {
         <PasswordInput
           id="confirmPassword"
           name="confirmPassword"
-          placeholder="Confirm Password"
+          placeholder="Confirm your password"
           value={form.confirmPassword}
           onChange={handleChange}
           required

@@ -414,3 +414,9 @@ app.use((err, req, res, next) => {
 // Vercel will handle the server.
 // Do NOT use app.listen() here.
 module.exports = app;
+
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+}

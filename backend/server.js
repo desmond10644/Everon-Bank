@@ -1,4 +1,3 @@
-
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
@@ -53,10 +52,7 @@ const ensureNotificationTable = () => {
     db.query(
       "ALTER TABLE notifications ADD COLUMN is_read TINYINT(1) NOT NULL DEFAULT 0",
       (alterErr) => {
-        if (
-          alterErr &&
-          alterErr.code !== "ER_DUP_FIELDNAME"
-        ) {
+        if (alterErr && alterErr.code !== "ER_DUP_FIELDNAME") {
           console.error(
             "Failed to add notification read state:",
             alterErr.message
@@ -130,7 +126,10 @@ ensureNotificationTable();
 ensureLoanTable();
 ensureInvestmentTable();
 
-// Notification preferences
+// ================================
+// NOTIFICATION PREFERENCES
+// ================================
+
 db.query(
   `
   CREATE TABLE IF NOT EXISTS notification_preferences (
@@ -144,10 +143,7 @@ db.query(
   )
   `,
   (err) => {
-    if (
-      err &&
-      err.code !== "ER_NO_SUCH_TABLE"
-    ) {
+    if (err && err.code !== "ER_NO_SUCH_TABLE") {
       console.error(
         "Failed to initialize notification preferences:",
         err.message
@@ -156,7 +152,10 @@ db.query(
   }
 );
 
-// Investment activity
+// ================================
+// INVESTMENT ACTIVITY
+// ================================
+
 db.query(
   `
   CREATE TABLE IF NOT EXISTS investment_activity (
@@ -175,10 +174,7 @@ db.query(
   )
   `,
   (err) => {
-    if (
-      err &&
-      err.code !== "ER_NO_SUCH_TABLE"
-    ) {
+    if (err && err.code !== "ER_NO_SUCH_TABLE") {
       console.error(
         "Failed to initialize investment activity:",
         err.message
@@ -245,10 +241,7 @@ const ensureTransferTables = () => {
     )
     `,
     (err) => {
-      if (
-        err &&
-        err.code !== "ER_NO_SUCH_TABLE"
-      ) {
+      if (err && err.code !== "ER_NO_SUCH_TABLE") {
         console.error(
           "Failed to initialize beneficiaries:",
           err.message
@@ -280,10 +273,7 @@ const ensureTransferTables = () => {
     )
     `,
     (err) => {
-      if (
-        err &&
-        err.code !== "ER_NO_SUCH_TABLE"
-      ) {
+      if (err && err.code !== "ER_NO_SUCH_TABLE") {
         console.error(
           "Failed to initialize scheduled transfers:",
           err.message
@@ -384,6 +374,88 @@ app.get("/", (req, res) => {
 });
 
 // ================================
+// DATABASE CONNECTION TEST
+// ================================
+
+app.get("/api/db-test", (req, res) => {
+  db.getConnection((err, connection) => {
+    if (err) {
+      console.error(
+        "Database connection failed:",
+        err.message
+      );
+
+      return res.status(500).json({
+        success: false,
+        connected: false,
+        message: "Database connection failed",
+        error: err.message
+      });
+    }
+
+    connection.query(
+      "SELECT 1 AS test",
+      (queryErr, results) => {
+        connection.release();
+
+        if (queryErr) {
+          console.error(
+            "Database query failed:",
+            queryErr.message
+          );
+
+          return res.status(500).json({
+            success: false,
+            connected: false,
+            message: "Database query failed",
+            error: queryErr.message
+          });
+        }
+
+        res.status(200).json({
+          success: true,
+          connected: true,
+          message:
+            "Railway MySQL database connected successfully",
+          result: results
+        });
+      }
+    );
+  });
+});
+
+// ================================
+// DATABASE INFORMATION TEST
+// ================================
+
+app.get("/api/db-info", (req, res) => {
+  db.query(
+    "SELECT DATABASE() AS database_name",
+    (err, results) => {
+      if (err) {
+        console.error(
+          "Database information query failed:",
+          err.message
+        );
+
+        return res.status(500).json({
+          success: false,
+          connected: false,
+          message: "Could not read database information",
+          error: err.message
+        });
+      }
+
+      res.status(200).json({
+        success: true,
+        connected: true,
+        database: results[0].database_name
+      });
+    }
+  );
+});
+
+// ================================
 // 404 HANDLER
 // ================================
 
@@ -412,11 +484,18 @@ app.use((err, req, res, next) => {
 // ================================
 
 // Vercel will handle the server.
-// Do NOT use app.listen() here.
+// Do NOT use app.listen() when deployed to Vercel.
+
 module.exports = app;
+
+// ================================
+// LOCAL DEVELOPMENT
+// ================================
 
 if (require.main === module) {
   app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+    console.log(
+      `Everon Bank server running on port ${PORT}`
+    );
   });
 }

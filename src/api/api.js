@@ -1,8 +1,7 @@
 import { getUserTransactions as getStoredUserTransactions, addUserTransaction } from "../utils/transactionStorage";
 import { getUserAccounts as getStoredUserAccounts, addUserAccount } from "../utils/accountStorage";
 
-const API_URL = "http://localhost:5000/api";
-
+const API_URL = "https://everon-bankbackend.vercel.app/api";
 // ==========================
 // USERS
 // ==========================
